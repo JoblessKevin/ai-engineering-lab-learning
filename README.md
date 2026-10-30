@@ -23,6 +23,13 @@ python -m pip install numpy
 python -c "import numpy; print(numpy.__version__)"
 python -m pip show numpy
 
+2. 安裝 Jupyter lab
+python -m pip install jupyterlab ipykernel
+python -c "import sys; print(sys.executable)"
+
+# 啟動 Jupyter Lab
+python -m jupyter lab
+
 # 檢查 GPU 顯卡
 ```bash
 1. 作業系統資訊
@@ -59,3 +66,20 @@ messages：對話輸入。這裡只有一則 user message。
 usage：回傳實際的 Token 用量資訊。
 stop_reason：說明模型為什麼停止生成，例如正常完成或達到輸出限制。
 
+# 學習 uv
+1. (Requirement)
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+uv --version
+uv venv .venv
+uv pip install numpy pandas matplotlib
+
+2. 根據 pyproject.toml 直接更新所有 dependency
+uv sync
+
+3. (Optional) 可以指定版本安裝
+uv python install 3.12
+uv venv --python 3.12 .venv
+
+
+# pyproject.toml
+python 的 pom.xml

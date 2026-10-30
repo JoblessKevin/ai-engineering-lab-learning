@@ -1,0 +1,29 @@
+
+[project]
+name = "ai-engineering-lab-learning"
+version = "0.1.0"
+description = "My AI Engineering learning project"
+requires-python = ">=3.11"
+
+dependencies = [
+    "numpy>=2.0",
+    "pandas>=2.0",
+    "matplotlib>=3.8",
+    "jupyterlab>=4.0",
+]
+
+[project.optional-dependencies]
+llm = [
+    "google-genai",
+    "anthropic",
+    "openai",
+]
+
+ml = [
+    "scikit-learn",
+]
+
+dev = [
+    "pytest",
+    "ruff",
+]
