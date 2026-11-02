@@ -1,6 +1,9 @@
 # ai-engineering-lab-learning
 An AI learning project.
 
+# VS code extension
+Python, Pylance, Jupyter, GitLens, Remote SSH, Python Debugger, Black Formatter, Ruff (使用需停用 Black Formatter)
+
 # Windows PowerShell
 1. 確認 Python 與 pip
 python --version
@@ -66,7 +69,7 @@ messages：對話輸入。這裡只有一則 user message。
 usage：回傳實際的 Token 用量資訊。
 stop_reason：說明模型為什麼停止生成，例如正常完成或達到輸出限制。
 
-# 學習 uv
+# 安裝 uv
 1. (Requirement)
 powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
 uv --version
@@ -80,6 +83,48 @@ uv sync
 uv python install 3.12
 uv venv --python 3.12 .venv
 
+# uv 實際練習
+1. 確認專案狀態
+git status
+uv --version
+Test-Path .\pyproject.toml
+Test-Path .\uv.lock
+
+2. 建立獨立的 uv 練習環境
+mkdir uv-practice
+cd uv-practice
+uv init --bare --no-workspace
+uv python list
+
+3. 用 uv 管理 Python 版本與依賴
+uv add numpy
+uv add pandas
+uv add "google-genai"
+Get-Content .\pyproject.toml
+uv lock
+uv sync
+
+
+4. 確認 uv 確實在管理環境
+uv run python -c "import sys; print(sys.executable)"
+uv run python -c "import numpy, pandas; print('NumPy:', numpy.__version__); print('Pandas:', pandas.__version__)"
+uv tree
+
+"print('Hello from uv!')" | Set-Content .\hello.py
+uv run hello.py
+
+uv remove pandas
+uv tree
+uv add pandas
+uv tree
+
 
 # pyproject.toml
 python 的 pom.xml
+
+## 安裝 Hugging Face Datasets
+cd C:\Users\yk.chiu\Documents\GitHub\ai-engineering-lab-learning\uv-practice
+uv add datasets huggingface_hub
+uv run python -c "import datasets, huggingface_hub; print(datasets.__version__); print(huggingface_hub.__version__)"
+uv run python .\data_management.py
+
