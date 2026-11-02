@@ -128,3 +128,7 @@ uv add datasets huggingface_hub
 uv run python -c "import datasets, huggingface_hub; print(datasets.__version__); print(huggingface_hub.__version__)"
 uv run python .\data_management.py
 
+
+## Docker
+docker desktop start
+
